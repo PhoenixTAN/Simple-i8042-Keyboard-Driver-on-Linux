@@ -1,32 +1,49 @@
 # Simple-i8042-Keyboard-Driver-on-Linux
 
-A Linux kernel module.
+This is a Linux kernel module.
 
-# How to run this driver?
+## File description
+* **ziqi_KBD_module_irq.c** is the interrupt-based keyboard driver.
+* **test.c** is the user level program to communicate with the kernel level keyboard driver.
+* keyboard_driver_poll.c is the poll-based keyboard driver.
+* keyboard_driver_poll_test.c is the user level program.
 
-* ziqi_KBD_module_irq.c is the interrupt-based keyboard driver.
-* test.c is the user level program to run.
+## What do this program do?
+1. This is a keyboard driver in Linux kernel level.   
+    The purpose is to load our own keyboard driver to provide keyboard service for the user.  
+    We use a user level program to communicate with the kernel level module.
+2. The keyboard should still work if we unload the primary Linux keyboard.  
+3. The shift + letter should be the uppercase.
+4. Backspace and Enter work.
+5. After the termination of this program, the original keyboard should work as usual.
 
-```
-# make
-```
+## How to run this driver?
 
-Remove the module if it exits.
-```
-# rmmod ziqi_KBD_module_irq
-```
+### Dependency / Environment
+1. Linux operating system (Linux puppy 2.6.33.2).
+
+### Step by step
+1. make file.
+    ```
+    # make
+    ```
+
+2. Remove the module if it exits.
+    ```
+    # rmmod ziqi_KBD_module_irq
+    ```
   
-Insert my keyboard driver.
-```
-# insmod ziqi_KBD_module_irq.ko
-```
+3. Insert my keyboard driver.
+    ```
+    # insmod ziqi_KBD_module_irq.ko
+    ```
 
-Compile.
-```
-# gcc -o test test.c
-```
+4. Compile.
+    ```
+    # gcc -o test test.c
+    ```
 
-Run the user space program.
-```
-# ./test
-```
+5. Run the user space program.
+    ```
+    # ./test
+    ```
