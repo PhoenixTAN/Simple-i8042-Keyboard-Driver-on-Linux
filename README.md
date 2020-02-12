@@ -21,6 +21,7 @@ This is a Linux kernel module.
 
 ### Dependency / Environment
 1. Linux operating system (Linux puppy 2.6.33.2).
+2. Virtual Machine: vBox.
 
 ### Step by step
 1. make file.
